@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,6 +21,7 @@ namespace _222_Goman_WPF_Project
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool themeSwitch = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -37,8 +39,8 @@ namespace _222_Goman_WPF_Project
         }
         void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (MessageBox.Show("Вы уверены, что хотите закрыть окно?", "Message",
-            MessageBoxButton.YesNo) == System.Windows.MessageBoxResult.No)
+            if (MessageBox.Show("Вы уверены, что хотите закрыть окно?", "Предупреждение",
+            MessageBoxButton.YesNo, MessageBoxImage.Information) == System.Windows.MessageBoxResult.No)
                 e.Cancel = true;
             else
 
@@ -53,25 +55,22 @@ namespace _222_Goman_WPF_Project
             // загружаем словарь ресурсов
             ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
             ResourceDictionary resourceDictBlack = Application.LoadComponent(uriBlack) as ResourceDictionary;
-            //if (Application.Current.Resources.MergedDictionaries.Contains(resourceDictBlack))
-            //{
-            //    // очищаем коллекцию ресурсов приложения
-            //    Application.Current.Resources.Clear();
-            //    // добавляем загруженный словарь ресурсов
-            //    Application.Current.Resources.MergedDictionaries.Add(resourceDict);
-            //    MessageBox.Show("(((((((((");
-            //}
-            //else if (Application.Current.Resources.MergedDictionaries.Contains(resourceDict))
-            //{
-            //    // очищаем коллекцию ресурсов приложения
-            //    Application.Current.Resources.Clear();
-            //    // добавляем загруженный словарь ресурсов
-            //    Application.Current.Resources.MergedDictionaries.Add(resourceDictBlack);
-            //    MessageBox.Show(")))))))))))");
-            //}
-            Application.Current.Resources.Clear();
-            //добавляем загруженный словарь ресурсов
-            Application.Current.Resources.MergedDictionaries.Add(resourceDictBlack);
+            if (themeSwitch == true)
+            {
+                // очищаем коллекцию ресурсов приложения
+                Application.Current.Resources.Clear();
+                // добавляем загруженный словарь ресурсов
+                Application.Current.Resources.MergedDictionaries.Add(resourceDict);
+                themeSwitch = false;
+            }
+            else if (themeSwitch == false)
+            {
+                // очищаем коллекцию ресурсов приложения
+                Application.Current.Resources.Clear();
+                // добавляем загруженный словарь ресурсов
+                Application.Current.Resources.MergedDictionaries.Add(resourceDictBlack);
+                themeSwitch = true;
+            }
         }
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)

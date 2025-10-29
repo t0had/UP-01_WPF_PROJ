@@ -1,21 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Anton\\Desktop\\222_Goman_WPF_Project\\",
+  "WorkspaceRootPath": "C:\\Users\\227177\\Desktop\\UP-02_WPF_PROJ\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7CFE2780-1640-4A51-9298-C13AAA6C6D89}|222_Goman_WPF_Project.csproj|c:\\users\\anton\\desktop\\222_goman_wpf_project\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7CFE2780-1640-4A51-9298-C13AAA6C6D89}|222_Goman_WPF_Project.csproj|C:\\Users\\227177\\Desktop\\UP-02_WPF_PROJ\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7CFE2780-1640-4A51-9298-C13AAA6C6D89}|222_Goman_WPF_Project.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7CFE2780-1640-4A51-9298-C13AAA6C6D89}|222_Goman_WPF_Project.csproj|c:\\users\\anton\\desktop\\222_goman_wpf_project\\dictionaryblacktheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{7CFE2780-1640-4A51-9298-C13AAA6C6D89}|222_Goman_WPF_Project.csproj|solutionrelative:dictionaryblacktheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CFE2780-1640-4A51-9298-C13AAA6C6D89}|222_Goman_WPF_Project.csproj|c:\\users\\anton\\desktop\\222_goman_wpf_project\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{7CFE2780-1640-4A51-9298-C13AAA6C6D89}|222_Goman_WPF_Project.csproj|C:\\Users\\227177\\Desktop\\UP-02_WPF_PROJ\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{7CFE2780-1640-4A51-9298-C13AAA6C6D89}|222_Goman_WPF_Project.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7CFE2780-1640-4A51-9298-C13AAA6C6D89}|222_Goman_WPF_Project.csproj|c:\\users\\anton\\desktop\\222_goman_wpf_project\\dictionary.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{7CFE2780-1640-4A51-9298-C13AAA6C6D89}|222_Goman_WPF_Project.csproj|c:\\users\\227177\\desktop\\up-02_wpf_proj\\dictionaryblacktheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7CFE2780-1640-4A51-9298-C13AAA6C6D89}|222_Goman_WPF_Project.csproj|solutionrelative:dictionaryblacktheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7CFE2780-1640-4A51-9298-C13AAA6C6D89}|222_Goman_WPF_Project.csproj|C:\\Users\\227177\\Desktop\\UP-02_WPF_PROJ\\dictionary.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{7CFE2780-1640-4A51-9298-C13AAA6C6D89}|222_Goman_WPF_Project.csproj|solutionrelative:dictionary.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
@@ -26,19 +26,15 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "DictionaryBlackTheme.xaml",
-              "DocumentMoniker": "C:\\Users\\Anton\\Desktop\\222_Goman_WPF_Project\\DictionaryBlackTheme.xaml",
+              "DocumentMoniker": "C:\\Users\\227177\\Desktop\\UP-02_WPF_PROJ\\DictionaryBlackTheme.xaml",
               "RelativeDocumentMoniker": "DictionaryBlackTheme.xaml",
-              "ToolTip": "C:\\Users\\Anton\\Desktop\\222_Goman_WPF_Project\\DictionaryBlackTheme.xaml",
+              "ToolTip": "C:\\Users\\227177\\Desktop\\UP-02_WPF_PROJ\\DictionaryBlackTheme.xaml",
               "RelativeToolTip": "DictionaryBlackTheme.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-10-27T10:32:41.014Z",
@@ -48,21 +44,20 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Dictionary.xaml",
-              "DocumentMoniker": "C:\\Users\\Anton\\Desktop\\222_Goman_WPF_Project\\Dictionary.xaml",
+              "DocumentMoniker": "C:\\Users\\227177\\Desktop\\UP-02_WPF_PROJ\\Dictionary.xaml",
               "RelativeDocumentMoniker": "Dictionary.xaml",
-              "ToolTip": "C:\\Users\\Anton\\Desktop\\222_Goman_WPF_Project\\Dictionary.xaml",
+              "ToolTip": "C:\\Users\\227177\\Desktop\\UP-02_WPF_PROJ\\Dictionary.xaml",
               "RelativeToolTip": "Dictionary.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-27T10:26:48.223Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-27T10:26:48.223Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\Anton\\Desktop\\222_Goman_WPF_Project\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\227177\\Desktop\\UP-02_WPF_PROJ\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "C:\\Users\\Anton\\Desktop\\222_Goman_WPF_Project\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\227177\\Desktop\\UP-02_WPF_PROJ\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-10-27T10:05:09.694Z",
@@ -72,11 +67,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Anton\\Desktop\\222_Goman_WPF_Project\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\227177\\Desktop\\UP-02_WPF_PROJ\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\Anton\\Desktop\\222_Goman_WPF_Project\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\227177\\Desktop\\UP-02_WPF_PROJ\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAgwEkAAABSAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwCoAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-27T10:05:09.247Z",
               "EditorCaption": ""
