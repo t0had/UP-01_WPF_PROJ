@@ -17,9 +17,15 @@
             <RowDefinition Height="217*"/>
             <RowDefinition Height="233*"/>
         </Grid.RowDefinitions>
-        <Label Content="Пароль"
+        <Label Content="Пароль:"
             x:Name="labelPass"
-            Margin="173,188,0,232"
+            Margin="200,188,0,232"
+            HorizontalAlignment="Left"
+            Width="64"
+            Grid.RowSpan="2" />
+        <Label Content="Логин:"
+            x:Name="labelLogin"
+            Margin="200,112,0,232"
             HorizontalAlignment="Left"
             Width="64"
             Grid.RowSpan="2" />
@@ -44,7 +50,8 @@
             Height="32"
             VerticalAlignment="Bottom"
             Grid.Column="1"
-            PasswordChanged="PasswordBox_PasswordChanged" />
+            PasswordChanged="PasswordBox_PasswordChanged" 
+                     />
         <Button x:Name="ButtonEnter"
             Margin="69,20,0,0"
             Height="34"
@@ -97,7 +104,7 @@
             Margin="0,96,322,0"
             VerticalContentAlignment="Center"
             FontSize="20" />
-        // Поле для ввода
+        <!--// Поле для ввода-->
         <TextBox Grid.Column="1"
             Visibility="Hidden"
             x:Name="captchaInput"
@@ -108,7 +115,7 @@
             Text=""
             VerticalAlignment="Top"
             Width="160" />
-        // Кнопка подтверждения
+        <!--Кнопка подтверждения-->
         <Button x:Name="submitCaptcha"
             Margin="69,20,0,0"
             Visibility="Hidden"
@@ -125,6 +132,7 @@
             Name="labelCaptcha"
             Margin="178,104,0,87"
             HorizontalAlignment="Left"
+            Visibility="Hidden"
             Width="54" />
         
     </Grid>

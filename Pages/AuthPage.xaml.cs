@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -49,7 +51,7 @@ namespace _222_Goman_WPF_Project.Pages
 
             string hashedPassword = GetHash(PasswordBox.Password);
 
-            using (var db = new Entities())
+            using (var db = new Goman_DB_Payment0Entities().GetContext())
             {
                 var user = db.Users
                 .AsNoTracking()
@@ -77,10 +79,10 @@ namespace _222_Goman_WPF_Project.Pages
                     switch (user.Role)
                     {
                         case "User":
-                            NavigationService?.Navigate(new Pages.UserPage());
+                            //NavigationService?.Navigate(new Pages.UserPage());
                             break;
                         case "Admin":
-                            NavigationService?.Navigate(new Pages.AdminPage());
+                            //NavigationService?.Navigate(new Pages.AdminPage());
                             break;
 
                     }
@@ -89,13 +91,15 @@ namespace _222_Goman_WPF_Project.Pages
         }
         private void ButtonReg_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService?.Navigate(new RegPage());
+            //NavigationService?.Navigate(new RegPage());
+            MessageBox.Show("Высветилось окно регистрации пользователя!");
         }
 
         private void ButtonChangePassword_Click(object sender,
         RoutedEventArgs e)
         {
-            NavigationService?.Navigate(new ChangePassPage());
+            //NavigationService?.Navigate(new ChangePassPage());
+            MessageBox.Show("Высветилось окно смены пароля!");
         }
 
         private void txtHintLogin_MouseLeftButtonUp(object sender,
@@ -126,9 +130,9 @@ namespace _222_Goman_WPF_Project.Pages
                     labelLogin.Visibility = Visibility.Visible;
                     labelPass.Visibility = Visibility.Visible;
                     TextBoxLogin.Visibility = Visibility.Visible;
-                    txtHintLogin.Visibility = Visibility.Visible;
+                    //txtHintLogin.Visibility = Visibility.Visible;
                     PasswordBox.Visibility = Visibility.Visible;
-                    txtHintPass.Visibility = Visibility.Visible;
+                    //txtHintPass.Visibility = Visibility.Visible;
 
                     ButtonChangePassword.Visibility = Visibility.Visible;
                     ButtonEnter.Visibility = Visibility.Visible;
@@ -143,15 +147,37 @@ namespace _222_Goman_WPF_Project.Pages
                     labelLogin.Visibility = Visibility.Hidden;
                     labelPass.Visibility = Visibility.Hidden;
                     TextBoxLogin.Visibility = Visibility.Hidden;
-                    txtHintLogin.Visibility = Visibility.Hidden;
+                    //txtHintLogin.Visibility = Visibility.Hidden;
                     PasswordBox.Visibility = Visibility.Hidden;
-                    txtHintPass.Visibility = Visibility.Hidden;
+                    //txtHintPass.Visibility = Visibility.Hidden;
 
                     ButtonChangePassword.Visibility = Visibility.Hidden;
                     ButtonEnter.Visibility = Visibility.Hidden;
                     ButtonReg.Visibility = Visibility.Hidden;
                     return;
             }
+        }
+
+        public void CaptchaChange()
+
+        {
+
+            String allowchar = " ";
+            allowchar = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z";
+            allowchar += "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,y,z";
+            allowchar += "1,2,3,4,5,6,7,8,9,0";
+            char[] a = { ',' };
+            String[] ar = allowchar.Split(a);
+            String pwd = "";
+            string temp = "";
+            Random r = new Random();
+
+            for (int i = 0; i < 6; i++)
+            {
+                temp = ar[(r.Next(0, ar.Length))];
+                pwd += temp;
+            }
+            captcha.Text = pwd;
         }
         private void submitCaptcha_Click(object sender, RoutedEventArgs e)
         {
@@ -168,6 +194,24 @@ namespace _222_Goman_WPF_Project.Pages
                 failedAttempts = 0;
             }
         }
-        //остановился на странице 29 метод. рекомендаций уп. нужно доработать капчу, и еще дохуя чо отсутствует
+        private void textBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Copy ||
+            e.Command == ApplicationCommands.Cut ||
+            e.Command == ApplicationCommands.Paste)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TextBoxLogin_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
