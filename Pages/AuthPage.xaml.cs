@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _222_Goman_WPF_Project.DBModel;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity.Infrastructure;
@@ -51,7 +52,7 @@ namespace _222_Goman_WPF_Project.Pages
 
             string hashedPassword = GetHash(PasswordBox.Password);
 
-            using (var db = new Goman_DB_Payment0Entities().GetContext())
+            using (var db = new Goman_DB_Payment0Entities()) //get context баля почини
             {
                 var user = db.Users
                 .AsNoTracking()
