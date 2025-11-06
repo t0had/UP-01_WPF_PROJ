@@ -15,6 +15,16 @@ namespace _222_Goman_WPF_Project.DBModel
     
     public partial class Goman_DB_Payment0Entities : DbContext
     {
+        private static Goman_DB_Payment0Entities _context;
+
+        public static Goman_DB_Payment0Entities GetContext()
+        {
+            if (_context == null)
+            {
+                _context = new Goman_DB_Payment0Entities();
+            }
+            return _context;
+        }
         public Goman_DB_Payment0Entities()
             : base("name=Goman_DB_Payment0Entities")
         {

@@ -50,7 +50,7 @@ namespace _222_Goman_WPF_Project.Pages
 
             string hashedPassword = GetHash(PasswordBox.Password);
 
-            using (var db = new Goman_DB_Payment0Entities()) //get context баля почини
+            using (var db = new Goman_DB_Payment0Entities())
             {
                 var user = db.Users
                 .AsNoTracking()
@@ -78,10 +78,10 @@ namespace _222_Goman_WPF_Project.Pages
                     switch (user.Role)
                     {
                         case "User":
-                            //NavigationService?.Navigate(new Pages.UserPage());
+                            NavigationService?.Navigate(new UserPage());
                             break;
                         case "Admin":
-                            //NavigationService?.Navigate(new Pages.AdminPage());
+                            NavigationService?.Navigate(new AdminPage());
                             break;
 
                     }
