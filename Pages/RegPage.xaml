@@ -21,7 +21,6 @@
         <Label Grid.Column="1"
             Content="Введите логин"
             HorizontalAlignment="Left"
-
             Margin="91,13,0,0"
             Grid.Row="1"
             VerticalAlignment="Top"
@@ -125,7 +124,8 @@
             Grid.Row="1"
             VerticalAlignment="Top"
             Width="182"
-            Height="29" />
+            Height="29" 
+            MouseLeftButtonUp="lblLogHitn_MouseLeftButtonUp"/>
         <Label x:Name="lblPassHitn"
             Foreground="Gray"
             Grid.Column="1"
@@ -135,7 +135,8 @@
             Grid.Row="1"
             VerticalAlignment="Top"
             Width="182"
-            Height="29" />
+            Height="29"
+            MouseLeftButtonUp="lblPassHitn_MouseLeftButtonUp"/>
         <Label x:Name="lblPassSecHitn"
 
             Foreground="Gray"
@@ -146,7 +147,8 @@
             Grid.Row="1"
             VerticalAlignment="Top"
             Width="182"
-            Height="33" />
+            Height="33"
+            MouseLeftButtonUp="lblPassSecHitn_MouseLeftButtonUp"/>
         <Label x:Name="lblFioHitn"
             Foreground="Gray"
             Grid.Column="1"
@@ -156,7 +158,8 @@
             Grid.Row="1"
             VerticalAlignment="Top"
             Width="182"
-            Height="42" />
+            Height="42"
+            MouseLeftButtonUp="lblFioHitn_MouseLeftButtonUp"/>
         <Button x:Name="regButton"
             Grid.Column="1"
             Content="Зарегистрироваться"

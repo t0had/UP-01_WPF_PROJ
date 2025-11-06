@@ -36,15 +36,13 @@ namespace _222_Goman_WPF_Project.Pages
             using (var hash = SHA1.Create())
             {
                 return
-                string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x =>
-                x.ToString("X2")));
+                string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
             }
         }
         private void ButtonEnter_OnClick(object sender, RoutedEventArgs e)
         {
 
-            if (string.IsNullOrEmpty(TextBoxLogin.Text) ||
-            string.IsNullOrEmpty(PasswordBox.Password))
+            if (string.IsNullOrEmpty(TextBoxLogin.Text) || string.IsNullOrEmpty(PasswordBox.Password))
             {
                 MessageBox.Show("Введите логин или пароль");
                 return;
