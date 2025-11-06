@@ -92,8 +92,7 @@ namespace _222_Goman_WPF_Project.Pages
         }
         private void ButtonReg_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService?.Navigate(new RegPage());
-            MessageBox.Show("Высветилось окно регистрации пользователя!");
+            NavigationService?.Navigate(new RegPage());
         }
 
         private void ButtonChangePassword_Click(object sender,
