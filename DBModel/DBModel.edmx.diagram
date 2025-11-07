@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ce8fe35c30f24828852b745510985f3d" Name="Diagram1">
+      <Diagram DiagramId="3bd2360404bc4a0aae97759dec4a9b5b" Name="Diagram1">
         <EntityTypeShape EntityType="Goman_DB_Payment0Model.Categories" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Goman_DB_Payment0Model.Payments" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Goman_DB_Payment0Model.Users" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
-        <AssociationConnector Association="Goman_DB_Payment0Model.FK__Payments__Catego__4F7CD00D" ManuallyRouted="false" />
-        <AssociationConnector Association="Goman_DB_Payment0Model.FK__Payments__UserID__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="Goman_DB_Payment0Model.FK__Payments__Catego__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="Goman_DB_Payment0Model.FK__Payments__UserID__3B75D760" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

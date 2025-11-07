@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Goman_DB_Payment0Model" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище Goman_DB_Payment0Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="ID" />
@@ -35,7 +35,7 @@
           <Property Name="FIO" Type="varchar(max)" />
           <Property Name="Photo" Type="nvarchar(max)" />
         </EntityType>
-        <Association Name="FK__Payments__Catego__4F7CD00D">
+        <Association Name="FK__Payments__Catego__3C69FB99">
           <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
           <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
           <ReferentialConstraint>
@@ -47,7 +47,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Payments__UserID__4E88ABD4">
+        <Association Name="FK__Payments__UserID__3B75D760">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
           <ReferentialConstraint>
@@ -63,11 +63,11 @@
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Payments__Catego__4F7CD00D" Association="Self.FK__Payments__Catego__4F7CD00D">
+          <AssociationSet Name="FK__Payments__Catego__3C69FB99" Association="Self.FK__Payments__Catego__3C69FB99">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Payments" EntitySet="Payments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Payments__UserID__4E88ABD4" Association="Self.FK__Payments__UserID__4E88ABD4">
+          <AssociationSet Name="FK__Payments__UserID__3B75D760" Association="Self.FK__Payments__UserID__3B75D760">
             <End Role="Users" EntitySet="Users" />
             <End Role="Payments" EntitySet="Payments" />
           </AssociationSet>
@@ -83,7 +83,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Payments" Relationship="Self.FK__Payments__Catego__4F7CD00D" FromRole="Categories" ToRole="Payments" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK__Payments__Catego__3C69FB99" FromRole="Categories" ToRole="Payments" />
         </EntityType>
         <EntityType Name="Payments">
           <Key>
@@ -96,8 +96,8 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Num" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="Categories" Relationship="Self.FK__Payments__Catego__4F7CD00D" FromRole="Payments" ToRole="Categories" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Payments__UserID__4E88ABD4" FromRole="Payments" ToRole="Users" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK__Payments__Catego__3C69FB99" FromRole="Payments" ToRole="Categories" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Payments__UserID__3B75D760" FromRole="Payments" ToRole="Users" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -109,9 +109,9 @@
           <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Payments" Relationship="Self.FK__Payments__UserID__4E88ABD4" FromRole="Users" ToRole="Payments" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK__Payments__UserID__3B75D760" FromRole="Users" ToRole="Payments" />
         </EntityType>
-        <Association Name="FK__Payments__Catego__4F7CD00D">
+        <Association Name="FK__Payments__Catego__3C69FB99">
           <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
           <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
           <ReferentialConstraint>
@@ -123,7 +123,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Payments__UserID__4E88ABD4">
+        <Association Name="FK__Payments__UserID__3B75D760">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
           <ReferentialConstraint>
@@ -139,11 +139,11 @@
           <EntitySet Name="Categories" EntityType="Self.Categories" />
           <EntitySet Name="Payments" EntityType="Self.Payments" />
           <EntitySet Name="Users" EntityType="Self.Users" />
-          <AssociationSet Name="FK__Payments__Catego__4F7CD00D" Association="Self.FK__Payments__Catego__4F7CD00D">
+          <AssociationSet Name="FK__Payments__Catego__3C69FB99" Association="Self.FK__Payments__Catego__3C69FB99">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Payments" EntitySet="Payments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Payments__UserID__4E88ABD4" Association="Self.FK__Payments__UserID__4E88ABD4">
+          <AssociationSet Name="FK__Payments__UserID__3B75D760" Association="Self.FK__Payments__UserID__3B75D760">
             <End Role="Users" EntitySet="Users" />
             <End Role="Payments" EntitySet="Payments" />
           </AssociationSet>
@@ -203,7 +203,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
       </DesignerInfoPropertySet>
     </Options>

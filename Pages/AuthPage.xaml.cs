@@ -96,8 +96,7 @@ namespace _222_Goman_WPF_Project.Pages
         private void ButtonChangePassword_Click(object sender,
         RoutedEventArgs e)
         {
-            //NavigationService?.Navigate(new ChangePassPage());
-            MessageBox.Show("Высветилось окно смены пароля!");
+            NavigationService?.Navigate(new ChangePassPage());
         }
 
         private void txtHintLogin_MouseLeftButtonUp(object sender,
