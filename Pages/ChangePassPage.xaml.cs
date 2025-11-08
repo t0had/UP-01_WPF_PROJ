@@ -30,8 +30,7 @@ namespace _222_Goman_WPF_Project.Pages
         {
             using (var hash = SHA1.Create())
             {
-                return
-                string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
+                return string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
             }
         }
 
@@ -79,14 +78,14 @@ namespace _222_Goman_WPF_Project.Pages
             }
             else
             {
-                using (var db = new Goman_DB_Payment0Entities())
-                {
-                    var user = db.Users.AsNoTracking().FirstOrDefault(u => u.Login == txtbxLog.Text);
+                //using (var db = new Goman_DB_Payment0Entities())
+                //{
+                    var currentPassword = GetHash(passBxOld.Password);
+                    var user = Goman_DB_Payment0Entities.GetContext().Users.FirstOrDefault(u => u.Login == txtbxLog.Text && u.Password == currentPassword);
 
-                    if (user != null)
-
+                    if (user == null)
                     {
-                        MessageBox.Show("Пользователь с таким логином уже существует!");
+                        MessageBox.Show("Текущий пароль/логин неверный!");
                         return;
                     }
                     if (passBxFrst.Password.Length >= 6)
@@ -110,24 +109,29 @@ namespace _222_Goman_WPF_Project.Pages
                             }
                             else
                             {
-                                Users userObject = new Users
-                                {
-                                    Login = txtbxLog.Text,
-                                    Password = GetHash(passBxFrst.Password),
+                                //Users userObject = new Users
+                                //{
+                                //    Login = txtbxLog.Text,
+                                //    Password = GetHash(passBxFrst.Password),
 
-                                };
-                                db.Users.Add(userObject);
-                                db.SaveChanges();
-                                MessageBox.Show("Пользователь успешно зарегистрирован!");
+                                //};
+                                //db.Users.Add(userObject);
+                                user.Password = GetHash(passBxScnd.Password);
+                                MessageBox.Show(user.Password.ToString());
+                                //db.SaveChanges();
+                                Goman_DB_Payment0Entities.GetContext().SaveChanges();
+                                MessageBox.Show("Пароль успешно сменён!");
                                 txtbxLog.Clear();
+                                passBxOld.Clear();
                                 passBxFrst.Clear();
                                 passBxScnd.Clear();
+                                NavigationService?.Navigate(new AuthPage());
                                 return;
                             }
                         }
                     }
                     else MessageBox.Show("Пароль слишком короткий, должно быть минимум 6 символов!");
-                }
+                //}
             }
         }
         private void lblLogHitn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

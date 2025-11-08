@@ -21,12 +21,12 @@ namespace _222_Goman_WPF_Project.Pages
     /// </summary>
     public partial class AddPaymentPage : Page
     {
-        private Payment _currentPayment = new Payment();
-        public AddPaymentPage(Payment selectedPayment)
+        private Payments _currentPayment = new Payments();
+        public AddPaymentPage(Payments selectedPayment)
         {
             InitializeComponent();
 
-            CBCategory.ItemsSource = Goman_DB_Payment0Entities.GetContext().Category.ToList();
+            CBCategory.ItemsSource = Goman_DB_Payment0Entities.GetContext().Categories.ToList();
             CBCategory.DisplayMemberPath = "Name";
             CBUser.ItemsSource = Goman_DB_Payment0Entities.GetContext().Users.ToList();
             CBUser.DisplayMemberPath = "FIO";
@@ -56,7 +56,7 @@ namespace _222_Goman_WPF_Project.Pages
                 return;
             }
             if (_currentPayment.ID == 0)
-                Goman_DB_Payment0Entities.GetContext().Payment.Add(_currentPayment);
+                Goman_DB_Payment0Entities.GetContext().Payments.Add(_currentPayment);
             try
             {
                 Goman_DB_Payment0Entities.GetContext().SaveChanges();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,19 +27,28 @@ namespace _222_Goman_WPF_Project.Pages
         {
             InitializeComponent();
 
-            if (selectedUser != null) _currentUser = selectedUser; //откуда взять йоба селектед юзер
+            if (selectedUser != null) _currentUser = selectedUser;
             DataContext = _currentUser;
+        }
+        public static string GetHash(String password)
+        {
+            using (var hash = SHA1.Create())
+            {
+                return string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
+            }
         }
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder errors = new StringBuilder();
             if (string.IsNullOrWhiteSpace(_currentUser.Login)) errors.AppendLine("Укажите логин!");
-            if (string.IsNullOrWhiteSpace(_currentUser.Password)) errors.AppendLine("Укажите пароль!");
+            //if (string.IsNullOrWhiteSpace(_currentUser.Password)) errors.AppendLine("Укажите пароль!");
+            if (string.IsNullOrWhiteSpace(TBPass.Text)) errors.AppendLine("Укажите пароль!");
             if ((_currentUser.Role == null) || (cmbRole.Text == "")) errors.AppendLine("Выберите роль!");
             else
                 _currentUser.Role = cmbRole.Text;
             if (string.IsNullOrWhiteSpace(_currentUser.FIO)) errors.AppendLine("Укажите ФИО");
+            _currentUser.Password = GetHash(TBPass.Text);
             if (errors.Length > 0)
             {
                 MessageBox.Show(errors.ToString());

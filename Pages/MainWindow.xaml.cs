@@ -77,7 +77,10 @@ namespace _222_Goman_WPF_Project
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
-
+            if (MainFrame.NavigationService.CanGoBack)
+            {
+                MainFrame.NavigationService?.GoBack();
+            }
         }
 
         private void ButtonSignIn_Click(object sender, RoutedEventArgs e)

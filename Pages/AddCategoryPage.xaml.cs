@@ -17,32 +17,32 @@ using _222_Goman_WPF_Project.DBModel;
 namespace _222_Goman_WPF_Project.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AddCategoryPage.xaml
+    /// Логика взаимодействия для AddCategoriesPage.xaml
     /// </summary>
     public partial class AddCategoryPage : Page
     {
-        private Category _currentCategory = new Category();
-        public AddCategoryPage(Category selectedCategory)
+        private Categories _currentCategories = new Categories();
+        public AddCategoryPage(Categories selectedCategories)
         {
             InitializeComponent();
-            if (selectedCategory != null)
-                _currentCategory = selectedCategory;
-            DataContext = _currentCategory;
+            if (selectedCategories != null)
+                _currentCategories = selectedCategories;
+            DataContext = _currentCategories;
 
         }
         private void ButtonSaveCategory_Click(object sender, RoutedEventArgs
         e)
         {
             StringBuilder errors = new StringBuilder();
-            if (string.IsNullOrWhiteSpace(_currentCategory.Name))
+            if (string.IsNullOrWhiteSpace(_currentCategories.Name))
                 errors.AppendLine("Укажите название категории!");
             if (errors.Length > 0)
             {
                 MessageBox.Show(errors.ToString());
                 return;
             }
-            if (_currentCategory.ID == 0)
-                Goman_DB_Payment0Entities.GetContext().Category.Add(_currentCategory);
+            if (_currentCategories.ID == 0)
+                Goman_DB_Payment0Entities.GetContext().Categories.Add(_currentCategories);
             try
             {
                 Goman_DB_Payment0Entities.GetContext().SaveChanges();

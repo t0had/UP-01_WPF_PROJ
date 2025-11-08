@@ -26,7 +26,7 @@ namespace _222_Goman_WPF_Project.Pages
     public partial class AuthPage : Page
     {
         private int failedAttempts = 0;
-        private Users currentUser;
+        //private Users currentUser;
         public AuthPage()
         {
             InitializeComponent();

@@ -22,7 +22,7 @@
                 <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="50"/>
                 <DataGridTextColumn Header="Количество" Binding="{Binding Num}" Width="70"/>
                 <DataGridTextColumn Header="Сумма" Binding="{Binding Price}" Width="80"/>
-                <DataGridTextColumn Header="Категория" Binding="{Binding Category.Name}" Width="80" />
+                <DataGridTextColumn Header="Категория" Binding="{Binding Categories.Name}" Width="80" />
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

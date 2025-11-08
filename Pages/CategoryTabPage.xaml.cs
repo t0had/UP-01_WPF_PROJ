@@ -25,8 +25,7 @@ namespace _222_Goman_WPF_Project.Pages
         public CategoryTabPage()
         {
             InitializeComponent();
-            DataGridCategory.ItemsSource =
-            Goman_DB_Payment0Entities.GetContext().Category.ToList();
+            DataGridCategory.ItemsSource = Goman_DB_Payment0Entities.GetContext().Categories.ToList();
             this.IsVisibleChanged += Page_IsVisibleChanged;
 
         }
@@ -35,7 +34,7 @@ namespace _222_Goman_WPF_Project.Pages
             if (Visibility == Visibility.Visible)
             {
                 Goman_DB_Payment0Entities.GetContext().ChangeTracker.Entries().ToList().ForEach(x => x.Reload()); 
-                DataGridCategory.ItemsSource = Goman_DB_Payment0Entities.GetContext().Category.ToList();
+                DataGridCategory.ItemsSource = Goman_DB_Payment0Entities.GetContext().Categories.ToList();
             }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
@@ -45,16 +44,16 @@ namespace _222_Goman_WPF_Project.Pages
         private void ButtonDel_Click(object sender, RoutedEventArgs e)
         {
             var categoryForRemoving =
-            DataGridCategory.SelectedItems.Cast<Category>().ToList();
+            DataGridCategory.SelectedItems.Cast<Categories>().ToList();
             if (MessageBox.Show($"Вы точно хотите удалить записи в количестве { categoryForRemoving.Count()} элементов ? ", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
-                    Goman_DB_Payment0Entities.GetContext().Category.RemoveRange(categoryForRemoving);
+                    Goman_DB_Payment0Entities.GetContext().Categories.RemoveRange(categoryForRemoving);
                     Goman_DB_Payment0Entities.GetContext().SaveChanges();
                     MessageBox.Show("Данные успешно удалены!");
                     DataGridCategory.ItemsSource =
-                    Goman_DB_Payment0Entities.GetContext().Category.ToList();
+                    Goman_DB_Payment0Entities.GetContext().Categories.ToList();
                 }
                 catch (Exception ex)
                 {
@@ -64,7 +63,7 @@ namespace _222_Goman_WPF_Project.Pages
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Pages.AddCategoryPage((sender as Button).DataContext as Category));
+            NavigationService.Navigate(new Pages.AddCategoryPage((sender as Button).DataContext as Categories));
         }
     }
 }

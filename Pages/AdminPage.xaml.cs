@@ -26,16 +26,16 @@ namespace _222_Goman_WPF_Project.Pages
         }
         private void BtnTab1_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService?.Navigate(new UsersTabPage());
+            NavigationService?.Navigate(new UsersTabPage());
 
         }
         private void BtnTab2_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService?.Navigate(new CategoryTabPage());
+            NavigationService?.Navigate(new CategoryTabPage());
         }
         private void BtnTab3_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService?.Navigate(new PaymentTabPage());
+            NavigationService?.Navigate(new PaymentTabPage());
         }
         private void BtnTab4_Click(object sender, RoutedEventArgs e)
         {

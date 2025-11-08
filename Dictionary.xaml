@@ -21,9 +21,21 @@
         <Setter Property="Foreground" Value="Black"/>
     </Style>
     <Style TargetType="TextBox">
+        <Setter Property="Background" Value="White"/>
         <Setter Property="Foreground" Value="Black"/>
     </Style>
     <Style TargetType="PasswordBox">
         <Setter Property="Foreground" Value="Black"/>
+    </Style>
+    
+    <Style TargetType="DataGridColumnHeader">
+        <Setter Property="Background" Value="White"/>
+    </Style>
+    <Style TargetType="DataGridRow">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+    </Style>
+    <Style TargetType="DataGridCell">
+        <Setter Property="Background" Value="White"/>
     </Style>
 </ResourceDictionary>
