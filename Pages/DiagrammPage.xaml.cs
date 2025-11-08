@@ -160,7 +160,82 @@ namespace _222_Goman_WPF_Project.Pages
 
         private void ButtonExportExcel_Click(object sender, RoutedEventArgs e)
         {
+            var allUsers = _context.Users.ToList().OrderBy(u => u.FIO).ToList();
 
+            var application = new Excel.Application();
+            application.SheetsInNewWorkbook = allUsers.Count();
+            Excel.Workbook workbook = application.Workbooks.Add(Type.Missing);
+
+            for (int i = 0; i < allUsers.Count(); i++)
+            {
+                int startRowIndex = 1;
+                Excel.Worksheet worksheet = application.Worksheets.Item[i + 1];
+                worksheet.Name = allUsers[i].FIO;
+                worksheet.Cells[1][startRowIndex] = "Дата платежа";
+                worksheet.Cells[2][startRowIndex] = "Название";
+                worksheet.Cells[3][startRowIndex] = "Стоимость";
+                worksheet.Cells[4][startRowIndex] = "Количество";
+                worksheet.Cells[5][startRowIndex] = "Сумма";
+                Excel.Range columlHeaderRange = worksheet.Range[worksheet.Cells[1][1], worksheet.Cells[5][1]];
+                columlHeaderRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                columlHeaderRange.Font.Bold = true;
+                startRowIndex++;
+
+                var userCategories = allUsers[i].Payments.OrderBy(u => u.Date).GroupBy(u => u.Categories).OrderBy(u => u.Key.Name);
+                foreach (var groupCategory in userCategories)
+                {
+                    Excel.Range headerRange = worksheet.Range[worksheet.Cells[1][startRowIndex], worksheet.Cells[5][startRowIndex]];
+                    headerRange.Merge();
+                    headerRange.Value = groupCategory.Key.Name;
+                    headerRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    headerRange.Font.Italic = true;
+                    startRowIndex++;
+                    foreach (var payment in groupCategory)
+                    {
+                        worksheet.Cells[1][startRowIndex] = payment.Date.ToString(); //ToString("dd.MM.yyyy")
+                        worksheet.Cells[2][startRowIndex] = payment.Name;
+                        worksheet.Cells[3][startRowIndex] = payment.Price;
+                        (worksheet.Cells[3][startRowIndex] as Excel.Range).NumberFormat = "0.00";
+                        worksheet.Cells[4][startRowIndex] = payment.Num;
+                        worksheet.Cells[5][startRowIndex].Formula = $"=C{startRowIndex}*D{startRowIndex}";
+                        (worksheet.Cells[5][startRowIndex] as Excel.Range).NumberFormat = "0.00";
+                        startRowIndex++;
+                    } //завершение цикла по платежам
+
+                    Excel.Range sumRange = worksheet.Range[worksheet.Cells[1][startRowIndex], worksheet.Cells[4][startRowIndex]];
+                    sumRange.Merge();
+                    sumRange.Value = "ИТОГО:";
+                    sumRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+
+                    worksheet.Cells[5][startRowIndex].Formula = $"=SUM(E{startRowIndex - groupCategory.Count()}:" + $"E{startRowIndex - 1})";
+                    sumRange.Font.Bold = worksheet.Cells[5][startRowIndex].Font.Bold = true;
+                    startRowIndex++;
+
+                    Excel.Range rangeBorders = worksheet.Range[worksheet.Cells[1][1],worksheet.Cells[5][startRowIndex - 1]];
+                    rangeBorders.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle =
+                    rangeBorders.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle =
+                    rangeBorders.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle =
+                    rangeBorders.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle =
+                    rangeBorders.Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle =
+                    rangeBorders.Borders[Excel.XlBordersIndex.xlInsideVertical].LineStyle =
+                    Excel.XlLineStyle.xlContinuous;
+                    worksheet.Columns.AutoFit(); //завершение цикла по категориям платежей
+                }
+                application.Visible = true;
+                //завершение цикла по пользователям
+            }
+            Excel.Worksheet summarySheet = workbook.Worksheets.Add(After:workbook.Worksheets[workbook.Worksheets.Count]);
+            summarySheet.Name = "Общий итог";
+            // Запись заголовка и значения
+            summarySheet.Cells[1, 1] = "Общий итог:";
+            //summarySheet.Cells[1, 2] = grandTotal;  //ГРАНДТОТАЛ, ХЭЗЭ ГДЕ ЕГО СЧИТАТЬ. ГРАНД ТОТАЛ 
+            //Форматирование: красный цвет и жирный шрифт
+
+            Excel.Range summaryRange = summarySheet.Range[summarySheet.Cells[1,1], summarySheet.Cells[1, 2]];
+            summaryRange.Font.Color = Excel.XlRgbColor.rgbRed;
+            summaryRange.Font.Bold = true;
+            // Автоподбор ширины столбцов
+            summarySheet.Columns.AutoFit();
         }
     }
 }
