@@ -39,7 +39,7 @@ namespace _222_Goman_WPF_Project.Pages
         }
         private void BtnTab4_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService?.Navigate(new DiagrammPage());
+            NavigationService?.Navigate(new DiagrammPage());
         }
     }
 }

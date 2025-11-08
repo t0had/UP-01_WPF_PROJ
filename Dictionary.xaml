@@ -27,6 +27,9 @@
     <Style TargetType="PasswordBox">
         <Setter Property="Foreground" Value="Black"/>
     </Style>
+    <Style TargetType="ComboBox">
+        <Setter Property="Height" Value="30"/>
+    </Style>
     
     <Style TargetType="DataGridColumnHeader">
         <Setter Property="Background" Value="White"/>
