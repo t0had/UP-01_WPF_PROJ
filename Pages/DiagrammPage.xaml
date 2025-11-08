@@ -19,8 +19,8 @@
             <ComboBox x:Name="CmbBxUsers" DisplayMemberPath="FIO"  SelectedValuePath="ID" SelectedValue="{Binding Path=Users.name}" Width="150" SelectionChanged="UpdateChart"/>
             <Label Content="Тип диаграммы" VerticalAlignment="Center"/>
             <ComboBox x:Name="CmbBxDiagramm" SelectedValuePath="sss" SelectedValue="{Binding Path=sss}" Width="150" SelectionChanged="UpdateChart"/>
-            <Button x:Name="ButtonExportWord" Width="100" Content="Word"/>
-            <Button x:Name="ButtonExportExcel" Width="100" Content="Excel"/>
+            <Button x:Name="ButtonExportWord" Width="100" Content="Word" Click="ButtonExportWord_Click"/>
+            <Button x:Name="ButtonExportExcel" Width="100" Content="Excel" Click="ButtonExportExcel_Click"/>
         </StackPanel>
         
         
