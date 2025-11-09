@@ -34,7 +34,6 @@
             Margin="62,0,0,75"
             TextWrapping="Wrap"
             ToolTip="Введите логин или почту"
-            TextChanged="TextBoxLogin_TextChanged"
 
             Height="34"
             VerticalAlignment="Bottom"
@@ -50,7 +49,6 @@
             Height="32"
             VerticalAlignment="Bottom"
             Grid.Column="1"
-            PasswordChanged="PasswordBox_PasswordChanged" 
                      />
         <Button x:Name="ButtonEnter"
             Margin="69,20,0,0"

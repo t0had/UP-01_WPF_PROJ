@@ -47,15 +47,13 @@
                             <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Image Width="200" Grid.Row="1" Stretch="UniformToFill" HorizontalAlignment="Center">
-                            <!--<Image.Source>
+                            <Image.Source>
                                 <Binding Path="Photo">
                                     <Binding.TargetNullValue>
-
-                                        --><!--Здесь прописываем путь к вашей картинке--><!--
                                         <ImageSource>images/default.png</ImageSource>
                                     </Binding.TargetNullValue>
                                 </Binding>
-                            </Image.Source>-->
+                            </Image.Source>
                         </Image>
 
                         <TextBlock VerticalAlignment="Center" TextAlignment="Center" Width="200" Grid.Row="0" TextWrapping="Wrap" Text="{Binding FIO}" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold"/>

@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using _222_Goman_WPF_Project.DBModel;
 
 namespace _222_Goman_WPF_Project.Pages
@@ -53,19 +44,16 @@ namespace _222_Goman_WPF_Project.Pages
             try
             {
                 List<Users> currentUsers = Goman_DB_Payment0Entities.GetContext().Users.ToList();
-                //Филтрация по фамилии
                 if (!string.IsNullOrWhiteSpace(fioFilterTextBox.Text))
                 {
                     currentUsers = currentUsers.Where(x =>
                     x.FIO.ToLower().Contains(fioFilterTextBox.Text.ToLower())).ToList();
                 }
-                //Фильтрация по роли
                 if (onlyAdminCheckBox.IsChecked.Value)
                 {
 
                     currentUsers = currentUsers.Where(x => x.Role == "Admin").ToList();
                 }
-                //Фильтрация по убыванию/возрастанию
                 ListUser.ItemsSource = (sortComboBox.SelectedIndex == 0) ? currentUsers.OrderBy(x => x.FIO).ToList() : currentUsers.OrderByDescending(x => x.FIO).ToList();
             }
             catch (Exception)

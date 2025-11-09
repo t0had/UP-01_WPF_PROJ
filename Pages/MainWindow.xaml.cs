@@ -1,19 +1,7 @@
 ﻿using _222_Goman_WPF_Project.Pages;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace _222_Goman_WPF_Project
 {
@@ -51,25 +39,19 @@ namespace _222_Goman_WPF_Project
 
         private void ButtonChangeTheme_Click(object sender, RoutedEventArgs e)
         {
-            // определяем путь к файлу ресурсов
             var uriBlack = new Uri("DictionaryBlackTheme.xaml", UriKind.Relative);
             var uri = new Uri("Dictionary.xaml", UriKind.Relative);
-            // загружаем словарь ресурсов
             ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
             ResourceDictionary resourceDictBlack = Application.LoadComponent(uriBlack) as ResourceDictionary;
             if (themeSwitch == true)
             {
-                // очищаем коллекцию ресурсов приложения
                 Application.Current.Resources.Clear();
-                // добавляем загруженный словарь ресурсов
                 Application.Current.Resources.MergedDictionaries.Add(resourceDict);
                 themeSwitch = false;
             }
             else if (themeSwitch == false)
             {
-                // очищаем коллекцию ресурсов приложения
                 Application.Current.Resources.Clear();
-                // добавляем загруженный словарь ресурсов
                 Application.Current.Resources.MergedDictionaries.Add(resourceDictBlack);
                 themeSwitch = true;
             }

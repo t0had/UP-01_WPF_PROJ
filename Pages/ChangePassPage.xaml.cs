@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using _222_Goman_WPF_Project.DBModel;
 
 namespace _222_Goman_WPF_Project.Pages
@@ -78,8 +70,6 @@ namespace _222_Goman_WPF_Project.Pages
             }
             else
             {
-                //using (var db = new Goman_DB_Payment0Entities())
-                //{
                     var currentPassword = GetHash(passBxOld.Password);
                     var user = Goman_DB_Payment0Entities.GetContext().Users.FirstOrDefault(u => u.Login == txtbxLog.Text && u.Password == currentPassword);
 
@@ -109,16 +99,8 @@ namespace _222_Goman_WPF_Project.Pages
                             }
                             else
                             {
-                                //Users userObject = new Users
-                                //{
-                                //    Login = txtbxLog.Text,
-                                //    Password = GetHash(passBxFrst.Password),
-
-                                //};
-                                //db.Users.Add(userObject);
                                 user.Password = GetHash(passBxScnd.Password);
                                 MessageBox.Show(user.Password.ToString());
-                                //db.SaveChanges();
                                 Goman_DB_Payment0Entities.GetContext().SaveChanges();
                                 MessageBox.Show("Пароль успешно сменён!");
                                 txtbxLog.Clear();
@@ -131,7 +113,6 @@ namespace _222_Goman_WPF_Project.Pages
                         }
                     }
                     else MessageBox.Show("Пароль слишком короткий, должно быть минимум 6 символов!");
-                //}
             }
         }
         private void lblLogHitn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

@@ -1,22 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Forms.DataVisualization.Charting;
 using Word = Microsoft.Office.Interop.Word;
 using Excel = Microsoft.Office.Interop.Excel;
 using _222_Goman_WPF_Project.DBModel;
-using System.Runtime.ConstrainedExecution;
 
 namespace _222_Goman_WPF_Project.Pages
 {
@@ -35,8 +24,8 @@ namespace _222_Goman_WPF_Project.Pages
                 IsValueShownAsLabel = true
             };
             ChartPayments.Series.Add(currentSeries);
-            CmbBxUsers.ItemsSource = _context.Users.ToList(); //ФИО пользователей
-            CmbBxDiagramm.ItemsSource = Enum.GetValues(typeof(SeriesChartType)); //Типы диаграммы
+            CmbBxUsers.ItemsSource = _context.Users.ToList(); 
+            CmbBxDiagramm.ItemsSource = Enum.GetValues(typeof(SeriesChartType)); 
         }
 
         private void UpdateChart(object sender, SelectionChangedEventArgs e)
@@ -72,7 +61,7 @@ namespace _222_Goman_WPF_Project.Pages
                 userParagraph.set_Style("Заголовок");
                 userRange.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
                 userRange.InsertParagraphAfter();
-                document.Paragraphs.Add(); //Пустая строка
+                document.Paragraphs.Add(); 
 
                 Word.Paragraph tableParagraph = document.Paragraphs.Add();
                 Word.Range tableRange = tableParagraph.Range;
@@ -102,31 +91,31 @@ namespace _222_Goman_WPF_Project.Pages
                     cellRange.Font.Size = 12;
 
                     cellRange = paymentsTable.Cell(i + 2, 2).Range;
-                    cellRange.Text = user.Payments.ToList().Where(u => u.Categories == currentCategory).Sum(u => u.Num * u.Price).ToString() + " руб."; //тут был ToString("N2")
+                    cellRange.Text = user.Payments.ToList().Where(u => u.Categories == currentCategory).Sum(u => u.Num * u.Price).ToString() + " руб."; 
                     cellRange.Font.Name = "Times New Roman";
 
                     cellRange.Font.Size = 12;
-                } //завершение цикла по строкам таблицы
-                document.Paragraphs.Add(); //пустая строка
+                } 
+                document.Paragraphs.Add(); 
 
                 Payments maxPayment = user.Payments.OrderByDescending(u => u.Price * u.Num).FirstOrDefault();
                 if (maxPayment != null)
                 {
                     Word.Paragraph maxPaymentParagraph = document.Paragraphs.Add();
                     Word.Range maxPaymentRange = maxPaymentParagraph.Range;
-                    maxPaymentRange.Text = $"Самый дорогостоящий платеж - { maxPayment.Name} за { (maxPayment.Price * maxPayment.Num).ToString()}" + $"руб.от { maxPayment.Date.ToString()}"; //тут был ToString("N2") и был ToString("dd.MM.yyyy")
+                    maxPaymentRange.Text = $"Самый дорогостоящий платеж - { maxPayment.Name} за { (maxPayment.Price * maxPayment.Num).ToString()}" + $"руб.от { maxPayment.Date.ToString()}"; 
                     maxPaymentParagraph.set_Style("Подзаголовок");
                     maxPaymentRange.Font.Color = Word.WdColor.wdColorDarkRed;
                     maxPaymentRange.InsertParagraphAfter();
                 }
-                document.Paragraphs.Add(); //пустая строка
+                document.Paragraphs.Add(); 
 
                 Payments minPayment = user.Payments.OrderBy(u => u.Price * u.Num).FirstOrDefault();
                 if (maxPayment != null)
                 {
                     Word.Paragraph minPaymentParagraph = document.Paragraphs.Add();
                     Word.Range minPaymentRange = minPaymentParagraph.Range;
-                    minPaymentRange.Text = $"Самый дешевый платеж - {minPayment.Name} за { (minPayment.Price * minPayment.Num).ToString()} " + $"руб.от { minPayment.Date.ToString()}"; //тут был ToString("N2") и был ToString("dd.MM.yyyy")
+                    minPaymentRange.Text = $"Самый дешевый платеж - {minPayment.Name} за { (minPayment.Price * minPayment.Num).ToString()} " + $"руб.от { minPayment.Date.ToString()}"; 
                     minPaymentParagraph.set_Style("Подзаголовок");
                     minPaymentRange.Font.Color = Word.WdColor.wdColorDarkGreen;
                     minPaymentRange.InsertParagraphAfter();
@@ -135,16 +124,8 @@ namespace _222_Goman_WPF_Project.Pages
                 if (user != allUsers.LastOrDefault()) document.Words.Last.InsertBreak(Word.WdBreakType.wdPageBreak);
 
                 application.Visible = true;
-
-                //НУЖНО СДЕЛАТЬ ТАК, ЧТОБЫ ПОЛЬЗОВАТЕЛЬ САМ ВЫБИРАЛ, КУДА И ЧТО ЭКСПОРТИРОВАТЬ
-                //document.SaveAs2(@"D:\Payments.docx");
-                //document.SaveAs2(@"D:\Payments.pdf",
-                //Word.WdExportFormat.wdExportFormatPDF);
-
-                //завершение цикла по пользователям
             }
 
-            //Страница 82 из инструкции. Эту всю хуйню нужно проверить!!!!!!
             document.ActiveWindow.ActivePane.View.SeekView = Microsoft.Office.Interop.Word.WdSeekView.wdSeekCurrentPageFooter; Object oMissing = System.Reflection.Missing.Value; Object TotalPages = Microsoft.Office.Interop.Word.WdFieldType.wdFieldNumPages; Object CurrentPage = Microsoft.Office.Interop.Word.WdFieldType.wdFieldPage;
             document.ActiveWindow.Selection.Fields.Add(document.ActiveWindow.Selection.Range, ref CurrentPage, ref oMissing, ref oMissing);
             document.ActiveWindow.Selection.TypeText(" из ");
@@ -152,7 +133,6 @@ namespace _222_Goman_WPF_Project.Pages
 
             foreach (Microsoft.Office.Interop.Word.Section section in document.Sections)
             {
-                // Получаем диапазон заголовка и добавляем данные в верхний колонтитул.
                 Microsoft.Office.Interop.Word.Range headerRange = section.Headers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range; headerRange.Fields.Add(headerRange, Microsoft.Office.Interop.Word.WdFieldType.wdFieldPage);
                 headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter; headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlack;
                 headerRange.Font.Size = 10; headerRange.Text = DateTime.Now.ToString("dd/MM/yyyy");
@@ -163,7 +143,6 @@ namespace _222_Goman_WPF_Project.Pages
         {
             var allUsers = _context.Users.ToList().OrderBy(u => u.FIO).ToList();
 
-            // Подсчет общего итога (грандтотала)
             double grandTotal = 0;
             foreach (var user in allUsers)
             {
@@ -239,7 +218,6 @@ namespace _222_Goman_WPF_Project.Pages
             summarySheet.Name = "Общий итог";
             summarySheet.Cells[1, 1] = "Общий итог:";
             summarySheet.Cells[1, 2] = grandTotal;
-            //summarySheet.Cells[1, 2].NumberFormat = "0.00";
 
             Excel.Range summaryRange = summarySheet.Range[summarySheet.Cells[1, 1], summarySheet.Cells[1, 2]];
             summaryRange.Font.Color = Excel.XlRgbColor.rgbRed;

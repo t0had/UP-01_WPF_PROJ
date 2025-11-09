@@ -1,22 +1,11 @@
 ﻿using _222_Goman_WPF_Project.DBModel;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace _222_Goman_WPF_Project.Pages
 {
@@ -26,7 +15,6 @@ namespace _222_Goman_WPF_Project.Pages
     public partial class AuthPage : Page
     {
         private int failedAttempts = 0;
-        //private Users currentUser;
         public AuthPage()
         {
             InitializeComponent();
@@ -127,9 +115,7 @@ namespace _222_Goman_WPF_Project.Pages
                     labelLogin.Visibility = Visibility.Visible;
                     labelPass.Visibility = Visibility.Visible;
                     TextBoxLogin.Visibility = Visibility.Visible;
-                    //txtHintLogin.Visibility = Visibility.Visible;
                     PasswordBox.Visibility = Visibility.Visible;
-                    //txtHintPass.Visibility = Visibility.Visible;
 
                     ButtonChangePassword.Visibility = Visibility.Visible;
                     ButtonEnter.Visibility = Visibility.Visible;
@@ -144,9 +130,7 @@ namespace _222_Goman_WPF_Project.Pages
                     labelLogin.Visibility = Visibility.Hidden;
                     labelPass.Visibility = Visibility.Hidden;
                     TextBoxLogin.Visibility = Visibility.Hidden;
-                    //txtHintLogin.Visibility = Visibility.Hidden;
                     PasswordBox.Visibility = Visibility.Hidden;
-                    //txtHintPass.Visibility = Visibility.Hidden;
 
                     ButtonChangePassword.Visibility = Visibility.Hidden;
                     ButtonEnter.Visibility = Visibility.Hidden;
@@ -199,16 +183,6 @@ namespace _222_Goman_WPF_Project.Pages
             {
                 e.Handled = true;
             }
-        }
-
-        private void TextBoxLogin_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
